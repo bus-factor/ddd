@@ -9,3 +9,21 @@ Domain-Driven Design related Classes and Utilities.
 [![Build Status](https://travis-ci.com/bus-factor/ddd.svg?token=6CVThNyY94qpVvuMgX3F&branch=master)](https://travis-ci.com/bus-factor/ddd.svg?token=6CVThNyY94qpVvuMgX3F&branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/bus-factor/ddd/badge.svg?branch=master)](https://coveralls.io/github/bus-factor/ddd?branch=master)
 
+## Model
+
+### Enum
+
+Example usage:
+```
+class ImageType extends Enum {
+    public const JPEG = 'image/jpeg';
+    public const PNG = 'image/png';
+    public const GIF = 'image/gif';
+}
+
+$jpegValue = ImageType::JPEG;
+$jpeg1 = ImageType::parse($jpegValue);
+$jpeg2 = ImageType::JPEG();
+
+// $jpeg1 === $jpeg2
+```
