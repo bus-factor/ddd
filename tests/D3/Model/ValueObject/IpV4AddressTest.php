@@ -48,5 +48,29 @@ class IpV4AddressTest extends TestCase
             $this->assertSame($value, $ipV4Address->getValue());
         }
     }
+
+    /**
+     * @covers ::isIpV4Address
+     *
+     * @return void
+     */
+    public function testIsIpV4Address(): void
+    {
+        $ipV4Address = new IpV4Address('192.168.0.1');
+
+        $this->assertTrue($ipV4Address->isIpV4Address());
+    }
+
+    /**
+     * @covers ::isIpV6Address
+     *
+     * @return void
+     */
+    public function testIsIpV6Address(): void
+    {
+        $ipV4Address = new IpV4Address('192.168.0.1');
+
+        $this->assertFalse($ipV4Address->isIpV6Address());
+    }
 }
 
