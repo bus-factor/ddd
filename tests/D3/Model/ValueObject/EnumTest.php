@@ -9,9 +9,9 @@ declare(strict_types=1);
  * @since  2019-09-14
  */
 
-namespace Test\D3\Model;
+namespace Test\D3\Model\ValueObject;
 
-use D3\Model\Enum;
+use D3\Model\ValueObject\Enum;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +25,8 @@ class EnumTestDummy extends Enum
 /**
  * Class EnumTest
  *
- * @coversDefaultClass \D3\Model\Enum
+ * @coversDefaultClass \D3\Model\ValueObject\Enum
+ * @covers \D3\Model\ValueObject\AbstractValueObject
  */
 class EnumTest extends TestCase
 {

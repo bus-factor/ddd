@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @since  2019-09-14
  */
 
-namespace D3\Model;
+namespace D3\Model\ValueObject;
 
 use InvalidArgumentException;
 use ReflectionClass;
@@ -17,21 +17,19 @@ use ReflectionClass;
 /**
  * Class Enum
  */
-class Enum
+class Enum extends AbstractValueObject
 {
     /** @var array $constants */
     private static $constants = [];
     /** @var array $instances */
     private static $instances = [];
-    /** @var mixed $value */
-    private $value;
 
     /**
      * Constructor.
      */
     private function __construct($value)
     {
-        $this->value = $value;
+        parent::__construct($value);
     }
 
     /**
@@ -65,14 +63,6 @@ class Enum
         }
 
         return self::$constants[static::class];
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->value;
     }
 
     /**

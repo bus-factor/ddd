@@ -11,19 +11,39 @@ Domain-Driven Design related Classes and Utilities.
 
 ## Model
 
-### Enum
+### Value Objects
+
+The following value object classes are available:
+
+* ```EmailAddress```
+* ```Enum```
+* ```IpAddress```
+* ```IpV4Address```
+* ```IpV6Address```
+* ```MacAddress```
+* ```Url```
+
+#### Enum
 
 Example usage:
 ```
-class ImageType extends Enum {
-    public const JPEG = 'image/jpeg';
-    public const PNG = 'image/png';
-    public const GIF = 'image/gif';
+/**
+ * @method EUR(): ImageType
+ * @method USD(): ImageType
+ */
+class Currency extends Enum {
+    public const EUR = 'USD';
+    public const USD = 'EUR';
 }
 
-$jpegValue = ImageType::JPEG;
-$jpeg1 = ImageType::parse($jpegValue);
-$jpeg2 = ImageType::JPEG();
+$value = Currency::EUR;
 
-// $jpeg1 === $jpeg2
+$currency1 = Currency::parse($value);
+$currency2 = Currency::EUR();
+
+// $currency1 === $currency2
+
+function convertCurrency($amount, Currency $oldCurrency, Currency $newCurrency) {
+    // ...
+}
 ```
