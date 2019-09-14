@@ -1,0 +1,17 @@
+language: php
+
+php:
+  - '7.2'
+  - '7.3'
+
+install:
+  - composer install
+  - composer require --dev php-coveralls/php-coveralls
+
+script:
+  - mkdir -p build/logs
+  - phpunit --coverage-clover build/logs/clover.xml
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls -v
+

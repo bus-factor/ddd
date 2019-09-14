@@ -1,0 +1,45 @@
+{
+  "name": "bus-factor/ddd",
+  "description": "Domain Driven Design related Classes and Utilities",
+  "type": "library",
+  "archive": {
+    "exclude": [
+      "/.gitattributes",
+      "/.gitignore",
+      "/.travis.yml",
+      "/phpunit.xml",
+      "/tests"
+    ]
+  },
+  "keywords": [
+    "ddd",
+    "domain-driven design",
+    "domain driven design"
+  ],
+  "support": {
+    "issues": "https://github.com/bus-factor/ddd/issues"
+  },
+  "readme": "README.md",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michael Leßnau",
+      "email": "michael.lessnau@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "D3\\": "src/D3"
+    }
+  },
+  "require": {
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">=5.7"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test:cov:text": "phpunit --coverage-text=php://stdout",
+    "test:cov:html": "phpunit --coverage-html=coverage"
+  }
+}
