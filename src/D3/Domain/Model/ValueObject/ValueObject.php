@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * AbstractValueObject.php
+ * ValueObject.php
  *
  * @author Michael Leßnau <michael.lessnau@gmail.com>
  * @since  2019-09-15
@@ -17,9 +17,9 @@ use InvalidArgumentException;
 use LogicException;
 
 /**
- * Class AbstractValueObject
+ * Class ValueObject
  */
-abstract class AbstractValueObject implements ValueObjectInterface
+class ValueObject implements ValueObjectInterface
 {
     use ComparableTrait;
 
@@ -41,6 +41,7 @@ abstract class AbstractValueObject implements ValueObjectInterface
     /**
      * @param ComparableInterface $subject Subject.
      * @return int
+     * @throws LogicException If class types mismatch.
      */
     public function compareTo(ComparableInterface $subject): int
     {
@@ -57,6 +58,15 @@ abstract class AbstractValueObject implements ValueObjectInterface
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * @param string $value Value.
+     * @return bool
+     */
+    public static function isValidValue($value): bool
+    {
+        return false;
     }
 }
 

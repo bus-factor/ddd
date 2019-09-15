@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * Class MacAddressTest
  *
  * @coversDefaultClass \D3\Domain\Model\ValueObject\MacAddress
- * @covers \D3\Domain\Model\ValueObject\AbstractValueObject
+ * @covers \D3\Domain\Model\ValueObject\ValueObject
  */
 class MacAddressTest extends TestCase
 {

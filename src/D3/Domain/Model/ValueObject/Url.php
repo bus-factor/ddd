@@ -14,7 +14,7 @@ namespace D3\Domain\Model\ValueObject;
 /**
  * Class Url
  */
-class Url extends AbstractValueObject
+class Url extends ValueObject
 {
     /**
      * @param string $value Value.

@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * Class UrlTest
  *
  * @coversDefaultClass \D3\Domain\Model\ValueObject\Url
- * @covers \D3\Domain\Model\ValueObject\AbstractValueObject
+ * @covers \D3\Domain\Model\ValueObject\ValueObject
  */
 class UrlTest extends TestCase
 {

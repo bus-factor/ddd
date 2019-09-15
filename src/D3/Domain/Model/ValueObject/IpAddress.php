@@ -14,7 +14,7 @@ namespace D3\Domain\Model\ValueObject;
 /**
  * Class IpAddress
  */
-class IpAddress extends AbstractValueObject
+class IpAddress extends ValueObject
 {
     /**
      * @param string $value Value.

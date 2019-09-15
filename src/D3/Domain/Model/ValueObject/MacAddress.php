@@ -14,7 +14,7 @@ namespace D3\Domain\Model\ValueObject;
 /**
  * Class MacAddress
  */
-class MacAddress extends AbstractValueObject
+class MacAddress extends ValueObject
 {
     /**
      * @param string $value Value.

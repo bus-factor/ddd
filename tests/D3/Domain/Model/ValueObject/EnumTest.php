@@ -26,7 +26,7 @@ class EnumTestDummy extends Enum
  * Class EnumTest
  *
  * @coversDefaultClass \D3\Domain\Model\ValueObject\Enum
- * @covers \D3\Domain\Model\ValueObject\AbstractValueObject
+ * @covers \D3\Domain\Model\ValueObject\ValueObject
  */
 class EnumTest extends TestCase
 {

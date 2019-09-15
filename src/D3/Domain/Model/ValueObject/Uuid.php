@@ -14,7 +14,7 @@ namespace D3\Domain\Model\ValueObject;
 /**
  * Class Uuid
  */
-class Uuid extends AbstractValueObject
+class Uuid extends ValueObject
 {
     /**
      * @param string $value Value.

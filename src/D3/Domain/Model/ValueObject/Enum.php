@@ -17,7 +17,7 @@ use ReflectionClass;
 /**
  * Class Enum
  */
-class Enum extends AbstractValueObject
+class Enum extends ValueObject
 {
     /** @var array $constants */
     private static $constants = [];

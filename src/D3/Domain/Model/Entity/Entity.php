@@ -11,13 +11,18 @@ declare(strict_types=1);
 
 namespace D3\Domain\Model\Entity;
 
+use D3\Domain\Model\ComparableInterface;
+use D3\Domain\Model\ComparableTrait;
 use D3\Domain\Model\ValueObject\Uuid;
+use LogicException;
 
 /**
  * Class Entity
  */
 class Entity implements EntityInterface
 {
+    use ComparableTrait;
+
     /** @var Uuid $id */
     private $id;
 
@@ -27,6 +32,20 @@ class Entity implements EntityInterface
     public function __construct(Uuid $id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @param ComparableInterface $subject Subject.
+     * @return int
+     * @throws LogicException If class types mismatch.
+     */
+    public function compareTo(ComparableInterface $subject): int
+    {
+        if (static::class !== get_class($subject)) {
+            throw new LogicException('Cannot compare incompatible types');
+        }
+
+        return $this->id->compareTo($subject->getId());
     }
 
     /**

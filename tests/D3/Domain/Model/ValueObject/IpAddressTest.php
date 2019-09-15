@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * Class IpAddressTest
  *
  * @coversDefaultClass \D3\Domain\Model\ValueObject\IpAddress
- * @covers \D3\Domain\Model\ValueObject\AbstractValueObject
+ * @covers \D3\Domain\Model\ValueObject\ValueObject
  */
 class IpAddressTest extends TestCase
 {

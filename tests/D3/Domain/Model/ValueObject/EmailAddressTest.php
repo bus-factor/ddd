@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * Class EmailAddressTest
  *
  * @coversDefaultClass \D3\Domain\Model\ValueObject\EmailAddress
- * @covers \D3\Domain\Model\ValueObject\AbstractValueObject
+ * @covers \D3\Domain\Model\ValueObject\ValueObject
  */
 class EmailAddressTest extends TestCase
 {
