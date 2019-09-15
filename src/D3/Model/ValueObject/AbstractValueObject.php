@@ -11,13 +11,18 @@ declare(strict_types=1);
 
 namespace D3\Model\ValueObject;
 
+use D3\Model\ComparableInterface;
+use D3\Model\ComparableTrait;
 use InvalidArgumentException;
+use LogicException;
 
 /**
  * Class AbstractValueObject
  */
 abstract class AbstractValueObject implements ValueObjectInterface
 {
+    use ComparableTrait;
+
     /** @var string $value */
     private $value;
 
@@ -31,6 +36,19 @@ abstract class AbstractValueObject implements ValueObjectInterface
         }
 
         $this->value = $value;
+    }
+
+    /**
+     * @param ComparableInterface $subject Subject.
+     * @return int
+     */
+    public function compareTo(ComparableInterface $subject): int
+    {
+        if (static::class !== get_class($subject)) {
+            throw new LogicException('Cannot compare incompatible types');
+        }
+
+        return $this->value <=> $subject->getValue();
     }
 
     /**

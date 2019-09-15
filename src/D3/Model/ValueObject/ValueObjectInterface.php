@@ -11,10 +11,12 @@ declare(strict_types=1);
 
 namespace D3\Model\ValueObject;
 
+use D3\Model\ComparableInterface;
+
 /**
  * Interface ValueObjectInterface
  */
-interface ValueObjectInterface
+interface ValueObjectInterface extends ComparableInterface
 {
     /**
      * @return mixed
