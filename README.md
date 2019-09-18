@@ -32,8 +32,8 @@ Example usage:
  * @method USD(): ImageType
  */
 class Currency extends Enum {
-    public const EUR = 'USD';
-    public const USD = 'EUR';
+    public const EUR = 'EUR';
+    public const USD = 'USD';
 }
 
 $value = Currency::EUR;

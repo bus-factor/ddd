@@ -33,7 +33,8 @@
     }
   },
   "require": {
-    "ramsey/uuid": "^3.8"
+    "ramsey/uuid": "^3.8",
+    "symfony/event-dispatcher": "^4.3"
   },
   "require-dev": {
     "phpunit/phpunit": ">=5.7"

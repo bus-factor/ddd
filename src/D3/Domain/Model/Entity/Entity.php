@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace D3\Domain\Model\Entity;
 
+use D3\Domain\Event\Event;
 use D3\Domain\Model\ComparableInterface;
 use D3\Domain\Model\ComparableTrait;
 use D3\Domain\Model\ValueObject\Uuid;
@@ -23,6 +24,8 @@ class Entity implements EntityInterface
 {
     use ComparableTrait;
 
+    /** @var Event[] $events */
+    private $events = [];
     /** @var Uuid $id */
     private $id;
 
@@ -32,6 +35,15 @@ class Entity implements EntityInterface
     public function __construct(Uuid $id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @param Event $event Event.
+     * @return void
+     */
+    protected function attachEvent(Event $event): void
+    {
+        $this->events[] = $event;
     }
 
     /**
@@ -46,6 +58,16 @@ class Entity implements EntityInterface
         }
 
         return $this->id->compareTo($subject->getId());
+    }
+
+    /**
+     * @return Event[]
+     */
+    public function detachEvents(): array
+    {
+        list($events, $this->events) = [$this->events, []];
+
+        return $events;
     }
 
     /**

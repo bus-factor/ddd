@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace D3\Domain\Model\Entity;
 
+use D3\Domain\Event\Event;
 use D3\Domain\Model\ComparableInterface;
 use D3\Domain\Model\ValueObject\Uuid;
 
@@ -19,6 +20,11 @@ use D3\Domain\Model\ValueObject\Uuid;
  */
 interface EntityInterface extends ComparableInterface
 {
+    /**
+     * @return Event[]
+     */
+    public function detachEvents(): array;
+
     /**
      * @return Uuid
      */
