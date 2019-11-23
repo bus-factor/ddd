@@ -35,5 +35,17 @@ class EventTest extends TestCase
 
         $this->assertSame($name, $event->getName());
     }
+
+    /**
+     * @covers ::jsonSerialize
+     *
+     * @return void
+     */
+    public function testJsonSerializable(): void
+    {
+        $event = new Event('foo.bar');
+
+        $this->assertEquals('[]', json_encode($event));
+    }
 }
 

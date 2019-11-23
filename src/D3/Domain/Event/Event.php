@@ -11,12 +11,13 @@ declare(strict_types=1);
 
 namespace D3\Domain\Event;
 
+use JsonSerializable;
 use Symfony\Contracts\EventDispatcher\Event as EventBase;
 
 /**
  * Class Event
  */
-class Event extends EventBase
+class Event extends EventBase implements JsonSerializable
 {
     /** @var string $name */
     private $name;
@@ -35,6 +36,14 @@ class Event extends EventBase
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return [];
     }
 }
 
