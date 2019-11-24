@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace D3\Infrastructure\Repository;
 
-use D3\Domain\Model\ValueObject\Uuid;
+use D3\Domain\Model\ValueObject\{Uuid, UuidInterface};
 use D3\Domain\Repository\RepositoryInterface;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Ramsey\Uuid\Uuid as UuidGenerator;
@@ -21,13 +21,24 @@ use Ramsey\Uuid\Uuid as UuidGenerator;
  */
 class Repository implements RepositoryInterface
 {
+    /** @var string $uuidFqcn */
+    private $uuidFqcn;
+
     /**
-     * @return Uuid
+     * @param string|null $uuidFqcn
+     */
+    public function __construct(string $uuidFqcn = null)
+    {
+        $this->uuidFqcn = $uuidFqcn ?? Uuid::class;
+    }
+
+    /**
+     * @return UuidInterface
      * @throws UnsatisfiedDependencyException In case of issues with the current OS/platform.
      */
-    public static function generateId(): Uuid
+    public function generateId(): UuidInterface
     {
-        return new Uuid(UuidGenerator::uuid4()->toString());
+        return new $this->uuidFqcn(UuidGenerator::uuid4()->toString());
     }
 }
 

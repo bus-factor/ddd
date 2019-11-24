@@ -14,7 +14,7 @@ namespace D3\Domain\Model\ValueObject;
 /**
  * Class Uuid
  */
-class Uuid extends ValueObject
+class Uuid extends ValueObject implements UuidInterface
 {
     /**
      * @param string $value Value.

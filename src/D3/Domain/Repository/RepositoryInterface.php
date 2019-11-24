@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace D3\Domain\Repository;
 
-use D3\Domain\Model\ValueObject\Uuid;
+use D3\Domain\Model\ValueObject\UuidInterface;
 
 /**
  * Interface RepositoryInterface
@@ -19,8 +19,8 @@ use D3\Domain\Model\ValueObject\Uuid;
 interface RepositoryInterface
 {
     /**
-     * @return Uuid
+     * @return UuidInterface
      */
-    public static function generateId(): Uuid;
+    public function generateId(): UuidInterface;
 }
 

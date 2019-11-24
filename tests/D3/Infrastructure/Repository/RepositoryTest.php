@@ -23,26 +23,30 @@ use PHPUnit\Framework\TestCase;
 class RepositoryTest extends TestCase
 {
     /**
+     * @covers ::__construct
      * @covers ::generateId
      *
      * @return void
      */
     public function testGenerateId(): void
     {
-        $id = Repository::generateId();
+        $repository = new Repository();
+        $id = $repository->generateId();
 
         $this->assertInstanceOf(Uuid::class, $id);
     }
 
     /**
+     * @covers ::__construct
      * @covers ::generateId
      *
      * @return void
      */
     public function testGenerateIdReturnsUniqueIds(): void
     {
-        $id1 = Repository::generateId();
-        $id2 = Repository::generateId();
+        $repository = new Repository();
+        $id1 = $repository->generateId();
+        $id2 = $repository->generateId();
 
         $this->assertFalse($id1->isEqualTo($id2));
     }
