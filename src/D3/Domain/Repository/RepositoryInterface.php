@@ -11,16 +11,10 @@ declare(strict_types=1);
 
 namespace D3\Domain\Repository;
 
-use D3\Domain\Model\ValueObject\UuidInterface;
-
 /**
  * Interface RepositoryInterface
  */
 interface RepositoryInterface
 {
-    /**
-     * @return UuidInterface
-     */
-    public function generateId(): UuidInterface;
 }
 

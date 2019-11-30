@@ -11,11 +11,23 @@ declare(strict_types=1);
 
 namespace D3\Domain\Model\ValueObject;
 
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+use Ramsey\Uuid\Uuid as UuidGenerator;
+
 /**
  * Class Uuid
  */
 class Uuid extends ValueObject implements UuidInterface
 {
+    /**
+     * @return static
+     * @throws UnsatisfiedDependencyException In case of issues with the current OS/platform.
+     */
+    public static function generate()
+    {
+        return new static(UuidGenerator::uuid4()->toString());
+    }
+
     /**
      * @param string $value Value.
      * @return bool

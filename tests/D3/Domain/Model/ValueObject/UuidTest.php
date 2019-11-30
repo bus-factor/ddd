@@ -24,6 +24,31 @@ use PHPUnit\Framework\TestCase;
 class UuidTest extends TestCase
 {
     /**
+     * @covers ::__construct
+     * @covers ::generate
+     *
+     * @return void
+     */
+    public function testGenerateId(): void
+    {
+        $this->assertInstanceOf(Uuid::class, Uuid::generate());
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers ::generate
+     *
+     * @return void
+     */
+    public function testGenerateIdReturnsUniqueIds(): void
+    {
+        $id1 = Uuid::generate();
+        $id2 = Uuid::generate();
+
+        $this->assertFalse($id1->isEqualTo($id2));
+    }
+
+    /**
      * @covers ::isValidValue
      *
      * @testWith [null, false]

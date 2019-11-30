@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Test\D3\Infrastructure\Repository;
 
-use D3\Domain\Model\ValueObject\Uuid;
+use D3\Domain\Repository\RepositoryInterface;
 use D3\Infrastructure\Repository\Repository;
 use PHPUnit\Framework\TestCase;
 
@@ -23,32 +23,13 @@ use PHPUnit\Framework\TestCase;
 class RepositoryTest extends TestCase
 {
     /**
-     * @covers ::__construct
-     * @covers ::generateId
-     *
      * @return void
      */
-    public function testGenerateId(): void
+    public function testInstanceOf(): void
     {
         $repository = new Repository();
-        $id = $repository->generateId();
 
-        $this->assertInstanceOf(Uuid::class, $id);
-    }
-
-    /**
-     * @covers ::__construct
-     * @covers ::generateId
-     *
-     * @return void
-     */
-    public function testGenerateIdReturnsUniqueIds(): void
-    {
-        $repository = new Repository();
-        $id1 = $repository->generateId();
-        $id2 = $repository->generateId();
-
-        $this->assertFalse($id1->isEqualTo($id2));
+        $this->assertInstanceOf(RepositoryInterface::class, $repository);
     }
 }
 
