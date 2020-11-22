@@ -33,7 +33,9 @@
     }
   },
   "require": {
-    "ramsey/uuid": "^3.8",
+    "php": "^7.3",
+    "ext-json": "*",
+    "ramsey/uuid": "^4.1",
     "symfony/event-dispatcher": "^4.3"
   },
   "require-dev": {
