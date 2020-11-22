@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * ValueObjectTest.php
+ * SingleValueObjectTest.php
  *
  * @author Michael Leßnau <michael.lessnau@gmail.com>
  * @since  2019-09-15
@@ -11,17 +11,17 @@ declare(strict_types=1);
 
 namespace Test\D3\ValueObject;
 
-use D3\ValueObject\ValueObject;
-use D3\ValueObject\ValueObjectInterface;
+use D3\ValueObject\SingleValueObject;
+use D3\ValueObject\SingleValueObjectInterface;
 use LogicException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class ValueObjectTest
+ * Class SingleValueObjectTest
  *
- * @coversDefaultClass \D3\ValueObject\ValueObject
+ * @coversDefaultClass \D3\ValueObject\SingleValueObject
  */
-class ValueObjectTest extends TestCase
+class SingleValueObjectTest extends TestCase
 {
     /**
      * @covers ::__construct
@@ -45,7 +45,7 @@ class ValueObjectTest extends TestCase
             $this->expectExceptionMessage($expectedExceptionMessage);
         }
 
-        $valueObject = new class($value) extends ValueObject {
+        $valueObject = new class($value) extends SingleValueObject {
             public static function isValidValue($value): bool {
                 return $value === 'abc';
             }
@@ -61,16 +61,16 @@ class ValueObjectTest extends TestCase
      *
      * @dataProvider provideCompareToData
      *
-     * @param ValueObjectInterface $valueObject1        Value object #1.
-     * @param ValueObjectInterface $valueObject2        Value object #2.
+     * @param SingleValueObjectInterface $valueObject1        Value object #1.
+     * @param SingleValueObjectInterface $valueObject2        Value object #2.
      * @param int             $retVal                   Return value.
      * @param string|null     $expectedException        Expected exception FQCN.
      * @param string|null     $expectedExceptionMessage Expected exception message.
      * @return void
      */
     public function testCompareTo(
-        ValueObjectInterface $valueObject1,
-        ValueObjectInterface $valueObject2,
+        SingleValueObjectInterface $valueObject1,
+        SingleValueObjectInterface $valueObject2,
         int $retVal,
         ?string $expectedException = null,
         ?string $expectedExceptionMessage = null
@@ -90,7 +90,7 @@ class ValueObjectTest extends TestCase
      */
     public function provideCompareToData(): array
     {
-        $fqcn = get_class(new class('abc') extends ValueObject {
+        $fqcn = get_class(new class('abc') extends SingleValueObject {
             public static function isValidValue($value): bool {
                 return true;
             }
@@ -113,12 +113,12 @@ class ValueObjectTest extends TestCase
                 0,
             ],
             'a incompatible b' => [
-                new class('abc') extends ValueObject {
+                new class('abc') extends SingleValueObject {
                     public static function isValidValue($value): bool {
                         return true;
                     }
                 },
-                new class('abc') extends ValueObject {
+                new class('abc') extends SingleValueObject {
                     public static function isValidValue($value): bool {
                         return true;
                     }
@@ -137,7 +137,6 @@ class ValueObjectTest extends TestCase
      */
     public function testIsValidValue(): void
     {
-        $this->assertFalse(ValueObject::isValidValue(1337));
+        $this->assertFalse(SingleValueObject::isValidValue(1337));
     }
 }
-

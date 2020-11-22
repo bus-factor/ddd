@@ -19,7 +19,7 @@ use LogicException;
 /**
  * Class ValueObject
  */
-class ValueObject implements ValueObjectInterface
+class SingleValueObject implements SingleValueObjectInterface
 {
     use ComparableTrait;
 
@@ -34,7 +34,9 @@ class ValueObject implements ValueObjectInterface
     public function __construct($value)
     {
         if (!static::isValidValue($value)) {
-            throw new InvalidArgumentException('Invalid value provided');
+            throw new InvalidArgumentException(
+                'Invalid value provided'
+            );
         }
 
         $this->value = $value;
@@ -48,7 +50,9 @@ class ValueObject implements ValueObjectInterface
     public function compareTo(ComparableInterface $subject): int
     {
         if (static::class !== get_class($subject)) {
-            throw new LogicException('Cannot compare incompatible types');
+            throw new LogicException(
+                'Cannot compare incompatible types'
+            );
         }
 
         return $this->value <=> $subject->getValue();
@@ -63,12 +67,36 @@ class ValueObject implements ValueObjectInterface
     }
 
     /**
+     * @return int
+     */
+    public function getFloatValue(): int
+    {
+        return $this->value;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIntegerValue(): int
+    {
+        return $this->value;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStringValue(): string
+    {
+        return $this->value;
+    }
+
+    /**
      * @param string $value Value.
      * @return bool
      */
-    public static function isValidValue($value): bool
-    {
+    public static function isValidValue(
+        $value
+    ): bool {
         return false;
     }
 }
-

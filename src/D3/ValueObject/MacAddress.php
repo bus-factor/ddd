@@ -14,7 +14,7 @@ namespace D3\ValueObject;
 /**
  * Class MacAddress
  */
-class MacAddress extends ValueObject
+class MacAddress extends SingleValueObject
 {
     /**
      * @param string $value Value.
@@ -30,4 +30,3 @@ class MacAddress extends ValueObject
             ) !== false;
     }
 }
-

@@ -14,7 +14,7 @@ namespace D3\ValueObject;
 /**
  * Class Url
  */
-class Url extends ValueObject
+class Url extends SingleValueObject
 {
     /**
      * @param string $value Value.
@@ -30,4 +30,3 @@ class Url extends ValueObject
             ) !== false;
     }
 }
-

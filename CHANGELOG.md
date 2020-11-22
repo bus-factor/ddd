@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.0] 2020-11-21
+### Added
+- Refactors namespaces
+- Adds collection classes
+- Renames ValueObject to SingleValueObject
+- Adds type specific value getters to SingleValueObject
+- Removes Entity/Aggregate/Event related code
+### Fixed
+- Makes Enum constructor protected
+
 ## [v2.0.0] 2019-11-30
 ### Added
 - Moves UUID generation to UUID class

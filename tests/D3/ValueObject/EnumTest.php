@@ -26,7 +26,7 @@ class EnumTestDummy extends Enum
  * Class EnumTest
  *
  * @coversDefaultClass \D3\ValueObject\Enum
- * @covers \D3\ValueObject\ValueObject
+ * @covers \D3\ValueObject\SingleValueObject
  */
 class EnumTest extends TestCase
 {
@@ -128,4 +128,3 @@ class EnumTest extends TestCase
         EnumTestDummy::parse('fizz');
     }
 }
-

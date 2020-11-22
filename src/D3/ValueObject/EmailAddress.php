@@ -14,7 +14,7 @@ namespace D3\ValueObject;
 /**
  * Class EmailAddress
  */
-class EmailAddress extends ValueObject
+class EmailAddress extends SingleValueObject
 {
     /**
      * @param string $value Value.

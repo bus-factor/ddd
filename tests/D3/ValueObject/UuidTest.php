@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * Class UuidTest
  *
  * @coversDefaultClass \D3\ValueObject\Uuid
- * @covers \D3\ValueObject\ValueObject
+ * @covers \D3\ValueObject\SingleValueObject
  */
 class UuidTest extends TestCase
 {
@@ -73,4 +73,3 @@ class UuidTest extends TestCase
         }
     }
 }
-

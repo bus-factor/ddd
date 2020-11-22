@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * Class EmailAddressTest
  *
  * @coversDefaultClass \D3\ValueObject\EmailAddress
- * @covers \D3\ValueObject\ValueObject
+ * @covers \D3\ValueObject\SingleValueObject
  */
 class EmailAddressTest extends TestCase
 {
@@ -48,4 +48,3 @@ class EmailAddressTest extends TestCase
         }
     }
 }
-

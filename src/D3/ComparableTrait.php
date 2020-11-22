@@ -76,4 +76,3 @@ trait ComparableTrait
         return $this->compareTo($subject) != 0;
     }
 }
-

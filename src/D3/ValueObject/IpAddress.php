@@ -14,7 +14,7 @@ namespace D3\ValueObject;
 /**
  * Class IpAddress
  */
-class IpAddress extends ValueObject
+class IpAddress extends SingleValueObject
 {
     /**
      * @param string $value Value.
@@ -54,4 +54,3 @@ class IpAddress extends ValueObject
         ) !== false;
     }
 }
-

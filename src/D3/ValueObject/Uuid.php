@@ -16,7 +16,7 @@ use Ramsey\Uuid\Uuid as UuidGenerator;
 /**
  * Class Uuid
  */
-class Uuid extends ValueObject implements UuidInterface
+class Uuid extends SingleValueObject
 {
     public const VALUE_PATTERN = '/^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}$/';
 
@@ -44,4 +44,3 @@ class Uuid extends ValueObject implements UuidInterface
             ) === 1;
     }
 }
-

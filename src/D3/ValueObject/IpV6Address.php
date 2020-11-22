@@ -47,4 +47,3 @@ class IpV6Address extends IpAddress
         return true;
     }
 }
-

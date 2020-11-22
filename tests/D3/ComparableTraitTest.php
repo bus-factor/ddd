@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class ComparableTraitTest
  *
- * @coversDefaultClass \D3\\ComparableTrait
+ * @coversDefaultClass \D3\ComparableTrait
  */
 class ComparableTraitTest extends TestCase
 {

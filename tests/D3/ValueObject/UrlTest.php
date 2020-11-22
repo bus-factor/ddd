@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * Class UrlTest
  *
  * @coversDefaultClass \D3\ValueObject\Url
- * @covers \D3\ValueObject\ValueObject
+ * @covers \D3\ValueObject\SingleValueObject
  */
 class UrlTest extends TestCase
 {
@@ -48,4 +48,3 @@ class UrlTest extends TestCase
         }
     }
 }
-

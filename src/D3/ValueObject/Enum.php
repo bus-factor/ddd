@@ -17,7 +17,7 @@ use ReflectionClass;
 /**
  * Class Enum
  */
-class Enum extends ValueObject
+class Enum extends SingleValueObject
 {
     /**
      * @var array
@@ -111,4 +111,3 @@ class Enum extends ValueObject
         return self::$instances[static::class][$name];
     }
 }
-

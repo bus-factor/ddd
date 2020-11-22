@@ -47,4 +47,3 @@ class IpV4Address extends IpAddress
         return false;
     }
 }
-

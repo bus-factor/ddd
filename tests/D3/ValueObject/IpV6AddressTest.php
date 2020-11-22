@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  * Class IpV6AddressTest
  *
  * @coversDefaultClass \D3\ValueObject\IpV6Address
- * @covers \D3\ValueObject\ValueObject
+ * @covers \D3\ValueObject\SingleValueObject
  */
 class IpV6AddressTest extends TestCase
 {
@@ -73,4 +73,3 @@ class IpV6AddressTest extends TestCase
         $this->assertTrue($ipV6Address->isIpV6Address());
     }
 }
-
