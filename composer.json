@@ -32,6 +32,11 @@
       "D3\\": "src/D3"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\D3\\": "tests/D3"
+    }
+  },
   "require": {
     "php": "^7.3",
     "ext-json": "*",
