@@ -24,27 +24,60 @@ The following value object classes are available:
 * ```SingleValueObject``` (Single-value object base class)
 * ```Url```
 
-#### Enum
+## Sample usage
 
-Example usage:
-```
+```php
 /**
- * @method static ImageType EUR()
- * @method static ImageType USD()
+ * @method static Currency EUR()
+ * @method static Currency USD()
  */
-class Currency extends Enum {
+class Currency extends \D3\ValueObject\Enum {
     public const EUR = 'EUR';
     public const USD = 'USD';
 }
 
-$value = Currency::EUR;
+class Decimal implements \D3\ComparableInterface {
+    use \D3\ComparableTrait;
 
-$currency1 = Currency::parse($value);
-$currency2 = Currency::EUR();
-
-// $currency1 === $currency2
-
-function convertCurrency($amount, Currency $oldCurrency, Currency $newCurrency) {
+    // ...
+    public function compareTo(\D3\ComparableInterface $subject) : int {
+    } 
     // ...
 }
+
+class Money implements \D3\ComparableInterface {
+    use \D3\ComparableTrait;
+
+    /** @var Decimal $amount*/
+    private $amount;
+    /** @var Currency $currency */
+    private $currency;
+
+    /**
+     * @param Decimal $amount
+     * @param Currency $currency
+     */
+    public function __construct(Decimal $amount, Currency $currency) {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+
+    /**
+     * @param \D3\ComparableInterface $subject
+     * @return int
+     */
+    public function compareTo(\D3\ComparableInterface $subject) : int {
+        $comparable = $subject instanceof static::class
+            && $this->currency === $subject->currency;
+
+        if (!$comparable) {
+            throw new LogicException('Incompatible currencies');
+        }
+
+        return $this->amount->compareTo($subject->amount);
+    }
+}
+
+$money = new Money(new Decimal(/* ... */), Currency::EUR());
+$otherMoney = new Money(new Decimal(/* ... */), Currency::EUR());
 ```
