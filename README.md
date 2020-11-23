@@ -21,6 +21,7 @@ The following value object classes are available:
 * ```IpV4Address```
 * ```IpV6Address```
 * ```MacAddress```
+* ```SingleValueObject``` (Single-value object base class)
 * ```Url```
 
 #### Enum
@@ -28,8 +29,8 @@ The following value object classes are available:
 Example usage:
 ```
 /**
- * @method EUR(): ImageType
- * @method USD(): ImageType
+ * @method static ImageType EUR()
+ * @method static ImageType USD()
  */
 class Currency extends Enum {
     public const EUR = 'EUR';
