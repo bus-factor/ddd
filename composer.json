@@ -29,12 +29,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Ddd\\": "src/Ddd"
+      "BusFactor\\Ddd\\": "src/BusFactor/Ddd"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Test\\Ddd\\": "tests/Ddd"
+      "Test\\BusFactor\\Ddd\\": "tests/BusFactor/Ddd"
     }
   },
   "require": {
