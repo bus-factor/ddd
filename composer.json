@@ -46,7 +46,7 @@
     "phpunit/phpunit": ">=5.7"
   },
   "scripts": {
-    "test": "phpunit",
+    "test": "phpunit --no-coverage",
     "test:cov:text": "phpunit --coverage-text=php://stdout",
     "test:cov:html": "phpunit --coverage-html=coverage"
   }
