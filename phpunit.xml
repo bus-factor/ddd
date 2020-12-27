@@ -7,9 +7,12 @@
   bootstrap="vendor/autoload.php"
   cacheResult="false"
   forceCoversAnnotation="true"
-  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
 >
-  <coverage>
+  <coverage
+    includeUncoveredFiles="true"
+    processUncoveredFiles="true"
+  >
     <include>
       <directory suffix=".php">src</directory>
     </include>
