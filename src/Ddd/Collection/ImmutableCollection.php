@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace D3\Collection;
+namespace Ddd\Collection;
 
 /**
  * Class ImmutableCollection

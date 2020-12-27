@@ -3,18 +3,18 @@
 declare(strict_types=1);
 
 /**
- * IpV4Address.php
+ * IpAddress.php
  *
  * @author Michael Leßnau <michael.lessnau@gmail.com>
  * @since  2019-09-14
  */
 
-namespace D3\ValueObject;
+namespace Ddd\ValueObject;
 
 /**
- * Class IpV4Address
+ * Class IpAddress
  */
-class IpV4Address extends IpAddress
+class IpAddress extends SingleValueObject
 {
     /**
      * @param string $value Value.
@@ -24,11 +24,7 @@ class IpV4Address extends IpAddress
         $value
     ): bool {
         return is_string($value)
-            && filter_var(
-                $value,
-                FILTER_VALIDATE_IP,
-                FILTER_FLAG_IPV4
-            ) !== false;
+            && filter_var($value, FILTER_VALIDATE_IP) !== false;
     }
 
     /**
@@ -36,7 +32,7 @@ class IpV4Address extends IpAddress
      */
     public function isIpV4Address(): bool
     {
-        return true;
+        return filter_var($this->getValue(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) !== false;
     }
 
     /**
@@ -44,6 +40,6 @@ class IpV4Address extends IpAddress
      */
     public function isIpV6Address(): bool
     {
-        return false;
+        return filter_var($this->getValue(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) !== false;
     }
 }

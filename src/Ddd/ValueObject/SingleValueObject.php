@@ -9,10 +9,10 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace D3\ValueObject;
+namespace Ddd\ValueObject;
 
-use D3\ComparableInterface;
-use D3\ComparableTrait;
+use Ddd\ComparableInterface;
+use Ddd\ComparableTrait;
 use InvalidArgumentException;
 use LogicException;
 
@@ -67,9 +67,9 @@ class SingleValueObject implements SingleValueObjectInterface
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getFloatValue(): int
+    public function getFloatValue(): float
     {
         return $this->value;
     }

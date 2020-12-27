@@ -9,17 +9,17 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace Test\D3\ValueObject;
+namespace Test\Ddd\ValueObject;
 
-use D3\ValueObject\Url;
+use Ddd\ValueObject\Url;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class UrlTest
  *
- * @coversDefaultClass \D3\ValueObject\Url
- * @covers \D3\ValueObject\SingleValueObject
+ * @coversDefaultClass \Ddd\ValueObject\Url
+ * @covers \Ddd\ValueObject\SingleValueObject
  */
 class UrlTest extends TestCase
 {

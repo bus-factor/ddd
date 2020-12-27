@@ -9,16 +9,16 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace Test\D3;
+namespace Test\Ddd;
 
-use D3\ComparableInterface;
-use D3\ComparableTrait;
+use Ddd\ComparableInterface;
+use Ddd\ComparableTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class ComparableTraitTest
  *
- * @coversDefaultClass \D3\ComparableTrait
+ * @coversDefaultClass \Ddd\ComparableTrait
  */
 class ComparableTraitTest extends TestCase
 {

@@ -9,9 +9,9 @@ declare(strict_types=1);
  * @since  2019-09-14
  */
 
-namespace D3\ValueObject;
+namespace Ddd\ValueObject;
 
-use D3\ComparableInterface;
+use Ddd\ComparableInterface;
 
 /**
  * Interface SingleValueObjectInterface
@@ -24,9 +24,9 @@ interface SingleValueObjectInterface extends ComparableInterface
     public function getValue();
 
     /**
-     * @return int
+     * @return float
      */
-    public function getFloatValue(): int;
+    public function getFloatValue(): float;
 
     /**
      * @return int

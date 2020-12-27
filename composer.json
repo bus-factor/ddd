@@ -29,12 +29,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "D3\\": "src/D3"
+      "Ddd\\": "src/Ddd"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Test\\D3\\": "tests/D3"
+      "Test\\Ddd\\": "tests/Ddd"
     }
   },
   "require": {

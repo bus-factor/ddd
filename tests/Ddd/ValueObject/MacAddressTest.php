@@ -9,17 +9,17 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace Test\D3\ValueObject;
+namespace Test\Ddd\ValueObject;
 
-use D3\ValueObject\MacAddress;
+use Ddd\ValueObject\MacAddress;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class MacAddressTest
  *
- * @coversDefaultClass \D3\ValueObject\MacAddress
- * @covers \D3\ValueObject\SingleValueObject
+ * @coversDefaultClass \Ddd\ValueObject\MacAddress
+ * @covers \Ddd\ValueObject\SingleValueObject
  */
 class MacAddressTest extends TestCase
 {

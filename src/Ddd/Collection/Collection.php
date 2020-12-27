@@ -9,9 +9,10 @@
 
 declare(strict_types=1);
 
-namespace D3\Collection;
+namespace Ddd\Collection;
 
 use ArrayObject;
+use Ddd\ValueObject\PhpType;
 use DomainException;
 
 /**
@@ -19,19 +20,6 @@ use DomainException;
  */
 class Collection extends ArrayObject
 {
-    private const PRIMITIVE_TYPES = [
-        'NULL',
-        'array',
-        'boolean',
-        'double',
-        'integer',
-        'object',
-        'resource (closed)',
-        'resource',
-        'string',
-        'unknown type',
-    ];
-
     /**
      * @var string
      */
@@ -62,12 +50,7 @@ class Collection extends ArrayObject
         parent::__construct([], $flags, $iteratorClass);
 
         $this->valueType = $valueType;
-
-        $this->valueTypeIsPrimitive = in_array(
-            $valueType,
-            self::PRIMITIVE_TYPES,
-            true
-        );
+        $this->valueTypeIsPrimitive = in_array($valueType, PhpType::getValidValues(), true);
 
         $this->exchangeArray($values);
     }
@@ -83,10 +66,10 @@ class Collection extends ArrayObject
     }
 
     /**
-     * @param mixed $values
+     * @param mixed|array $values
      * @return array
      */
-    public function exchangeArray($values)
+    public function exchangeArray($values): array
     {
         foreach ($values as $value) {
             $this->enforceConstraints($value);
@@ -131,20 +114,14 @@ class Collection extends ArrayObject
 
             if ($valueType !== $this->valueType) {
                 throw new DomainException(
-                    sprintf(
-                        'Expected value type [%s], got [%s]',
-                        $this->valueType,
-                        $valueType
-                    )
+                    sprintf('Expected value type [%s], got [%s]', $this->valueType, $valueType)
                 );
             }
         } elseif (!$value instanceof $this->valueType) {
+            $valueType = gettype($value) === PhpType::OBJECT ? get_class($value) : gettype($value);
+
             throw new DomainException(
-                sprintf(
-                    'Expected value type [%s], got [%s]',
-                    $this->valueType,
-                    get_class($value)
-                )
+                sprintf('Expected value type [%s], got [%s]', $this->valueType, $valueType)
             );
         }
     }

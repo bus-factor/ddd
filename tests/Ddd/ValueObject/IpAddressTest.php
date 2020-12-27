@@ -9,17 +9,17 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace Test\D3\ValueObject;
+namespace Test\Ddd\ValueObject;
 
-use D3\ValueObject\IpAddress;
+use Ddd\ValueObject\IpAddress;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class IpAddressTest
  *
- * @coversDefaultClass \D3\ValueObject\IpAddress
- * @covers \D3\ValueObject\SingleValueObject
+ * @coversDefaultClass \Ddd\ValueObject\IpAddress
+ * @covers \Ddd\ValueObject\SingleValueObject
  */
 class IpAddressTest extends TestCase
 {

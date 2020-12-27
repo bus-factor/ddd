@@ -3,33 +3,33 @@
 declare(strict_types=1);
 
 /**
- * IpV4AddressTest.php
+ * IpV6AddressTest.php
  *
  * @author Michael Leßnau <michael.lessnau@gmail.com>
  * @since  2019-09-15
  */
 
-namespace Test\D3\ValueObject;
+namespace Test\Ddd\ValueObject;
 
-use D3\ValueObject\IpV4Address;
+use Ddd\ValueObject\IpV6Address;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class IpV4AddressTest
+ * Class IpV6AddressTest
  *
- * @coversDefaultClass \D3\ValueObject\IpV4Address
- * @covers \D3\ValueObject\SingleValueObject
+ * @coversDefaultClass \Ddd\ValueObject\IpV6Address
+ * @covers \Ddd\ValueObject\SingleValueObject
  */
-class IpV4AddressTest extends TestCase
+class IpV6AddressTest extends TestCase
 {
     /**
      * @covers ::isValidValue
      *
      * @testWith [null, false]
      *           ["", false]
-     *           ["192.168.0.1", true]
-     *           ["2001:0db8:85a3:0000:0000:8a2e:0370:7334", false]
+     *           ["192.168.0.1", false]
+     *           ["2001:0db8:85a3:0000:0000:8a2e:0370:7334", true]
      *
      * @param mixed $value Value.
      * @param bool  $valid Indicates if the provided value is valid.
@@ -42,10 +42,10 @@ class IpV4AddressTest extends TestCase
             $this->expectExceptionMessage('Invalid value provided');
         }
 
-        $ipV4Address = new IpV4Address($value);
+        $ipV6Address = new IpV6Address($value);
 
         if ($valid) {
-            $this->assertSame($value, $ipV4Address->getValue());
+            $this->assertSame($value, $ipV6Address->getValue());
         }
     }
 
@@ -56,9 +56,9 @@ class IpV4AddressTest extends TestCase
      */
     public function testIsIpV4Address(): void
     {
-        $ipV4Address = new IpV4Address('192.168.0.1');
+        $ipV6Address = new IpV6Address('2001:0db8:85a3:0000:0000:8a2e:0370:7334');
 
-        $this->assertTrue($ipV4Address->isIpV4Address());
+        $this->assertFalse($ipV6Address->isIpV4Address());
     }
 
     /**
@@ -68,8 +68,8 @@ class IpV4AddressTest extends TestCase
      */
     public function testIsIpV6Address(): void
     {
-        $ipV4Address = new IpV4Address('192.168.0.1');
+        $ipV6Address = new IpV6Address('2001:0db8:85a3:0000:0000:8a2e:0370:7334');
 
-        $this->assertFalse($ipV4Address->isIpV6Address());
+        $this->assertTrue($ipV6Address->isIpV6Address());
     }
 }

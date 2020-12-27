@@ -9,17 +9,17 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace Test\D3\ValueObject;
+namespace Test\Ddd\ValueObject;
 
-use D3\ValueObject\Uuid;
+use Ddd\ValueObject\Uuid;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class UuidTest
  *
- * @coversDefaultClass \D3\ValueObject\Uuid
- * @covers \D3\ValueObject\SingleValueObject
+ * @coversDefaultClass \Ddd\ValueObject\Uuid
+ * @covers \Ddd\ValueObject\SingleValueObject
  */
 class UuidTest extends TestCase
 {

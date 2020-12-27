@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @since  2019-09-14
  */
 
-namespace D3\ValueObject;
+namespace Ddd\ValueObject;
 
 use InvalidArgumentException;
 use ReflectionClass;

@@ -3,18 +3,18 @@
 declare(strict_types=1);
 
 /**
- * MacAddress.php
+ * EmailAddress.php
  *
  * @author Michael Leßnau <michael.lessnau@gmail.com>
  * @since  2019-09-14
  */
 
-namespace D3\ValueObject;
+namespace Ddd\ValueObject;
 
 /**
- * Class MacAddress
+ * Class EmailAddress
  */
-class MacAddress extends SingleValueObject
+class EmailAddress extends SingleValueObject
 {
     /**
      * @param string $value Value.
@@ -24,9 +24,6 @@ class MacAddress extends SingleValueObject
         $value
     ): bool {
         return is_string($value)
-            && filter_var(
-                $value,
-                FILTER_VALIDATE_MAC
-            ) !== false;
+            && filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
     }
 }

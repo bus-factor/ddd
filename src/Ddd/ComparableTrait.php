@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace D3;
+namespace Ddd;
 
 /**
  * Trait ComparableTrait

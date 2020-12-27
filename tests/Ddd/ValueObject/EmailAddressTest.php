@@ -9,17 +9,17 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace Test\D3\ValueObject;
+namespace Test\Ddd\ValueObject;
 
-use D3\ValueObject\EmailAddress;
+use Ddd\ValueObject\EmailAddress;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class EmailAddressTest
  *
- * @coversDefaultClass \D3\ValueObject\EmailAddress
- * @covers \D3\ValueObject\SingleValueObject
+ * @coversDefaultClass \Ddd\ValueObject\EmailAddress
+ * @covers \Ddd\ValueObject\SingleValueObject
  */
 class EmailAddressTest extends TestCase
 {

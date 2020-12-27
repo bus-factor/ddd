@@ -9,17 +9,17 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace Test\D3\ValueObject;
+namespace Test\Ddd\ValueObject;
 
-use D3\ValueObject\SingleValueObject;
-use D3\ValueObject\SingleValueObjectInterface;
+use Ddd\ValueObject\SingleValueObject;
+use Ddd\ValueObject\SingleValueObjectInterface;
 use LogicException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class SingleValueObjectTest
  *
- * @coversDefaultClass \D3\ValueObject\SingleValueObject
+ * @coversDefaultClass \Ddd\ValueObject\SingleValueObject
  */
 class SingleValueObjectTest extends TestCase
 {
@@ -138,5 +138,71 @@ class SingleValueObjectTest extends TestCase
     public function testIsValidValue(): void
     {
         $this->assertFalse(SingleValueObject::isValidValue(1337));
+    }
+
+    /**
+     * @covers ::getFloatValue
+     *
+     * @return void
+     */
+    public function testGetFloatValue(): void
+    {
+        $value = 13.37;
+
+        $subject = new class($value) extends SingleValueObject {
+            public function __construct($value) {
+                parent::__construct($value);
+            }
+
+            public static function isValidValue($value): bool {
+                return true;
+            }
+        };
+
+        $this->assertSame($value, $subject->getFloatValue());
+    }
+
+    /**
+     * @covers ::getIntegerValue
+     *
+     * @return void
+     */
+    public function testGetIntegerValue(): void
+    {
+        $value = 42;
+
+        $subject = new class($value) extends SingleValueObject {
+            public function __construct($value) {
+                parent::__construct($value);
+            }
+
+            public static function isValidValue($value): bool {
+                return true;
+            }
+        };
+
+        $this->assertSame($value, $subject->getIntegerValue());
+    }
+
+    /**
+     * @covers ::getStringValue
+     *
+     * @return void
+     */
+    public function testGetStringValue(): void
+    {
+        $value = 'foo';
+
+        $subject = new class($value) extends SingleValueObject {
+            public function __construct($value) {
+                parent::__construct($value);
+            }
+
+            public static function isValidValue($value): bool {
+                return true;
+            }
+        };
+
+        $this->assertSame($value, $subject->getStringValue());
     }
 }

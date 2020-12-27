@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @since  2019-09-14
  */
 
-namespace D3\ValueObject;
+namespace Ddd\ValueObject;
 
 /**
  * Class IpV6Address
@@ -24,11 +24,7 @@ class IpV6Address extends IpAddress
         $value
     ): bool {
         return is_string($value)
-            && filter_var(
-                $value,
-                FILTER_VALIDATE_IP,
-                FILTER_FLAG_IPV6
-            ) !== false;
+            && filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) !== false;
     }
 
     /**

@@ -31,22 +31,22 @@ The following value object classes are available:
  * @method static Currency EUR()
  * @method static Currency USD()
  */
-class Currency extends \D3\ValueObject\Enum {
+class Currency extends \Ddd\ValueObject\Enum {
     public const EUR = 'EUR';
     public const USD = 'USD';
 }
 
-class Decimal implements \D3\ComparableInterface {
-    use \D3\ComparableTrait;
+class Decimal implements \Ddd\ComparableInterface {
+    use \Ddd\ComparableTrait;
 
     // ...
-    public function compareTo(\D3\ComparableInterface $subject) : int {
+    public function compareTo(\Ddd\ComparableInterface $subject) : int {
     } 
     // ...
 }
 
-class Money implements \D3\ComparableInterface {
-    use \D3\ComparableTrait;
+class Money implements \Ddd\ComparableInterface {
+    use \Ddd\ComparableTrait;
 
     /** @var Decimal $amount*/
     private $amount;
@@ -63,10 +63,10 @@ class Money implements \D3\ComparableInterface {
     }
 
     /**
-     * @param \D3\ComparableInterface $subject
+     * @param \Ddd\ComparableInterface $subject
      * @return int
      */
-    public function compareTo(\D3\ComparableInterface $subject) : int {
+    public function compareTo(\Ddd\ComparableInterface $subject) : int {
         $comparable = $subject instanceof static::class
             && $this->currency === $subject->currency;
 

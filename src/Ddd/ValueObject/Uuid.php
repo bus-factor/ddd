@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @since  2019-09-15
  */
 
-namespace D3\ValueObject;
+namespace Ddd\ValueObject;
 
 use Ramsey\Uuid\Uuid as UuidGenerator;
 
@@ -38,9 +38,6 @@ class Uuid extends SingleValueObject
         $value
     ): bool {
         return is_string($value)
-            && preg_match(
-                self::VALUE_PATTERN,
-                $value
-            ) === 1;
+            && preg_match(self::VALUE_PATTERN, $value) === 1;
     }
 }
