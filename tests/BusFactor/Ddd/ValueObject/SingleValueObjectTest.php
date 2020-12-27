@@ -141,6 +141,28 @@ class SingleValueObjectTest extends TestCase
     }
 
     /**
+     * @covers ::getArrayValue
+     *
+     * @return void
+     */
+    public function testGetArrayValue(): void
+    {
+        $value = [1, 2, 3];
+
+        $subject = new class($value) extends SingleValueObject {
+            public function __construct($value) {
+                parent::__construct($value);
+            }
+
+            public static function isValidValue($value): bool {
+                return true;
+            }
+        };
+
+        $this->assertEquals($value, $subject->getArrayValue());
+    }
+
+    /**
      * @covers ::getFloatValue
      *
      * @return void

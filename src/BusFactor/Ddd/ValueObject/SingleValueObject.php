@@ -24,7 +24,7 @@ class SingleValueObject implements SingleValueObjectInterface
     use ComparableTrait;
 
     /**
-     * @var string
+     * @var mixed
      */
     private $value;
 
@@ -62,6 +62,14 @@ class SingleValueObject implements SingleValueObjectInterface
      * @return mixed
      */
     public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @return array
+     */
+    public function getArrayValue(): array
     {
         return $this->value;
     }

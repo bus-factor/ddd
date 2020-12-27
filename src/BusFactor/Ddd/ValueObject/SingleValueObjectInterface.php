@@ -24,6 +24,11 @@ interface SingleValueObjectInterface extends ComparableInterface
     public function getValue();
 
     /**
+     * @return array
+     */
+    public function getArrayValue(): array;
+
+    /**
      * @return float
      */
     public function getFloatValue(): float;
