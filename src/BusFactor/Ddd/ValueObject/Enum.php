@@ -89,11 +89,11 @@ class Enum extends SingleValueObject
 
     /**
      * @param mixed $value
-     * @return self
+     * @return static
      */
     public static function parse(
         $value
-    ): self {
+    ) {
         $constants = static::getValidValues();
         $name = array_search($value, $constants, true);
 
