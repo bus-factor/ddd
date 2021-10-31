@@ -106,4 +106,24 @@ class CollectionTest extends TestCase
 
         $subject->append(4);
     }
+
+    /**
+     * @return void
+     */
+    public function testOffsetFormatEnforcement(): void
+    {
+        $subject = new class(PhpType::INTEGER) extends Collection {
+            protected function isValidOffsetFormat($offset): bool
+            {
+                return $offset === 'a';
+            }
+        };
+
+        $subject['a'] = 42;
+
+        $this->expectException(DomainException::class);
+        $this->expectExceptionMessage('Invalid offset format: b');
+
+        $subject['b'] = 23;
+    }
 }

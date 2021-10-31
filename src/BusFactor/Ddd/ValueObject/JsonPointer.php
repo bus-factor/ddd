@@ -36,7 +36,7 @@ class JsonPointer extends SingleValueObject
         $encodedReferences = [];
 
         foreach ($references as $reference) {
-            $encodedReferences[] = str_replace(['~', '/'], ['~0', '~1'], $reference);
+            $encodedReferences[] = str_replace(['~', '/'], ['~0', '~1'], (string) $reference);
         }
 
         return implode('/', $encodedReferences);

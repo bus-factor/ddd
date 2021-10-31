@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v5.3.0] 2021-10-31
+### Added
+- Adds protected ```Collection::isValidOffsetFormat()``` method to support constraints regarding array key formats
+### Fixed
+- Removes ```Enum::parse()``` return type and changes PHPDoc-only return typing to ```static``` for improved type inference
+
+## [v5.2.0] 2021-03-13
+### Modified
+- Updates PHP version requirements in ```composer.json```
+
 ## [v5.1.0] 2020-12-27
 ### Added
 - Adds ```JsonPointer``` value object
@@ -67,4 +77,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v0.1.0] 2019-09-14
 ### Added
 - Enumeration class
-

@@ -61,32 +61,33 @@ class Collection extends ArrayObject
      */
     public function append($value)
     {
-        $this->enforceConstraints($value);
+        $this->enforceConstraints(null, $value);
         parent::append($value);
     }
 
     /**
      * @param mixed|array $values
      * @return array
+     * @throws DomainException
      */
     public function exchangeArray($values): array
     {
-        foreach ($values as $value) {
-            $this->enforceConstraints($value);
+        foreach ($values as $offset => $value) {
+            $this->enforceConstraints($offset, $value);
         }
 
         return parent::exchangeArray($values);
     }
 
     /**
-     * @param mixed $index
-     * @param mixed $newValue
+     * @param mixed $offset
+     * @param mixed $value
      * @return void
      */
-    public function offsetSet($index, $newValue)
+    public function offsetSet($offset, $value)
     {
-        $this->enforceConstraints($newValue);
-        parent::offsetSet($index, $newValue);
+        $this->enforceConstraints($offset, $value);
+        parent::offsetSet($offset, $value);
     }
 
     /**
@@ -98,15 +99,29 @@ class Collection extends ArrayObject
     }
 
     /**
+     * @param int|string|null $offset
+     * @return bool
+     */
+    protected function isValidOffsetFormat($offset): bool
+    {
+        return true;
+    }
+
+    /**
+     * @param int|string|null $offset
      * @param mixed $value
      * @return void
      */
-    private function enforceConstraints($value): void
+    private function enforceConstraints($offset, $value): void
     {
         if ($this->frozen) {
             throw new DomainException(
                 'Cannot modify immutable object'
             );
+        }
+
+        if (!$this->isValidOffsetFormat($offset)) {
+            throw new DomainException('Invalid offset format: ' . $offset);
         }
 
         if ($this->valueTypeIsPrimitive) {
