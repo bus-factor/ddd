@@ -59,6 +59,7 @@ class Collection extends ArrayObject
      * @param mixed $value
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function append($value)
     {
         $this->enforceConstraints(null, $value);
@@ -84,6 +85,7 @@ class Collection extends ArrayObject
      * @param mixed $value
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $this->enforceConstraints($offset, $value);
