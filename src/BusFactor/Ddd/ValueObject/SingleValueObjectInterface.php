@@ -18,36 +18,15 @@ use BusFactor\Ddd\ComparableInterface;
  */
 interface SingleValueObjectInterface extends ComparableInterface
 {
-    /**
-     * @return mixed
-     */
-    public function getValue();
+    public function getValue(): mixed;
 
-    /**
-     * @return array
-     */
     public function getArrayValue(): array;
 
-    /**
-     * @return float
-     */
     public function getFloatValue(): float;
 
-    /**
-     * @return int
-     */
     public function getIntegerValue(): int;
 
-    /**
-     * @return string
-     */
     public function getStringValue(): string;
 
-    /**
-     * @param mixed $value Value.
-     * @return bool
-     */
-    public static function isValidValue(
-        $value
-    ): bool;
+    public static function isValidValue($value): bool;
 }

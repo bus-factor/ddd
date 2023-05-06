@@ -16,63 +16,33 @@ namespace BusFactor\Ddd;
  */
 trait ComparableTrait
 {
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isEqualTo(
-        ComparableInterface $subject
-    ): bool {
+    public function isEqualTo(ComparableInterface $subject): bool
+    {
         return $this->compareTo($subject) == 0;
     }
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isGreaterThan(
-        ComparableInterface $subject
-    ): bool {
+    public function isGreaterThan(ComparableInterface $subject): bool
+    {
         return $this->compareTo($subject) > 0;
     }
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isGreaterThanOrEqualTo(
-        ComparableInterface $subject
-    ): bool {
+    public function isGreaterThanOrEqualTo(ComparableInterface $subject): bool
+    {
         return $this->compareTo($subject) >= 0;
     }
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isLessThan(
-        ComparableInterface $subject
-    ): bool {
+    public function isLessThan(ComparableInterface $subject): bool
+    {
         return $this->compareTo($subject) < 0;
     }
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isLessThanOrEqualTo(
-        ComparableInterface $subject
-    ): bool {
+    public function isLessThanOrEqualTo(ComparableInterface $subject): bool
+    {
         return $this->compareTo($subject) <= 0;
     }
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isNotEqualTo(
-        ComparableInterface $subject
-    ): bool {
+    public function isNotEqualTo(ComparableInterface $subject): bool
+    {
         return $this->compareTo($subject) != 0;
     }
 }

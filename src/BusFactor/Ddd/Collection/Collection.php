@@ -11,68 +11,50 @@ declare(strict_types=1);
 
 namespace BusFactor\Ddd\Collection;
 
+use ArrayIterator;
 use ArrayObject;
 use BusFactor\Ddd\ValueObject\PhpType;
 use DomainException;
+use InvalidArgumentException;
 
 /**
  * Class Collection
  */
 class Collection extends ArrayObject
 {
-    /**
-     * @var string
-     */
-    private $valueType;
+    private bool $valueTypeIsPrimitive;
 
-    /**
-     * @var bool
-     */
-    private $valueTypeIsPrimitive;
+    private bool $frozen = false;
 
-    /**
-     * @var bool
-     */
-    private $frozen = false;
-
-    /**
-     * @param string $valueType
-     * @param array $values
-     * @param int $flags
-     * @param string $iteratorClass
-     */
     public function __construct(
-        string $valueType,
+        private readonly string $valueType,
         array $values = [],
         int $flags = 0,
-        string $iteratorClass = 'ArrayIterator'
+        string $iteratorClass = ArrayIterator::class,
     ) {
         parent::__construct([], $flags, $iteratorClass);
 
-        $this->valueType = $valueType;
         $this->valueTypeIsPrimitive = in_array($valueType, PhpType::getValidValues(), true);
 
         $this->exchangeArray($values);
     }
 
-    /**
-     * @param mixed $value
-     * @return void
-     */
-    #[\ReturnTypeWillChange]
-    public function append($value)
+    public function append(mixed $value): void
     {
         $this->enforceConstraints(null, $value);
         parent::append($value);
     }
 
     /**
-     * @param mixed|array $values
-     * @return array
      * @throws DomainException
+     * @throws InvalidArgumentException
      */
-    public function exchangeArray($values): array
+    public function exchangeArray(mixed $values): array
     {
+        if (! is_array($values)) {
+            throw new InvalidArgumentException('Expected array, got ' . gettype($values));
+        }
+
         foreach ($values as $offset => $value) {
             $this->enforceConstraints($offset, $value);
         }
@@ -80,46 +62,27 @@ class Collection extends ArrayObject
         return parent::exchangeArray($values);
     }
 
-    /**
-     * @param mixed $offset
-     * @param mixed $value
-     * @return void
-     */
-    #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->enforceConstraints($offset, $value);
+
         parent::offsetSet($offset, $value);
     }
 
-    /**
-     * @return void
-     */
     protected function freeze(): void
     {
         $this->frozen = true;
     }
 
-    /**
-     * @param int|string|null $offset
-     * @return bool
-     */
-    protected function isValidOffsetFormat($offset): bool
+    protected function isValidOffsetFormat(mixed $offset): bool
     {
         return true;
     }
 
-    /**
-     * @param int|string|null $offset
-     * @param mixed $value
-     * @return void
-     */
-    private function enforceConstraints($offset, $value): void
+    private function enforceConstraints(int|string|null $offset, mixed $value): void
     {
         if ($this->frozen) {
-            throw new DomainException(
-                'Cannot modify immutable object'
-            );
+            throw new DomainException('Cannot modify immutable object');
         }
 
         if (!$this->isValidOffsetFormat($offset)) {

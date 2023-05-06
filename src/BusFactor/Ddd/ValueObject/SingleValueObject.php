@@ -23,88 +23,53 @@ class SingleValueObject implements SingleValueObjectInterface
 {
     use ComparableTrait;
 
-    /**
-     * @var mixed
-     */
-    private $value;
-
-    /**
-     * @param mixed $value Value.
-     */
-    public function __construct($value)
-    {
-        if (!static::isValidValue($value)) {
-            throw new InvalidArgumentException(
-                'Invalid value provided'
-            );
+    public function __construct(
+        private readonly mixed $value
+    ) {
+        if (! static::isValidValue($this->value)) {
+            throw new InvalidArgumentException('Invalid value provided');
         }
-
-        $this->value = $value;
     }
 
     /**
-     * @param ComparableInterface $subject Subject.
-     * @return int
      * @throws LogicException If class types mismatch.
      */
     public function compareTo(ComparableInterface $subject): int
     {
         if (static::class !== get_class($subject)) {
-            throw new LogicException(
-                'Cannot compare incompatible types'
-            );
+            throw new LogicException('Cannot compare incompatible types');
         }
 
         return $this->value <=> $subject->getValue();
     }
 
-    /**
-     * @return mixed
-     */
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value;
     }
 
-    /**
-     * @return array
-     */
     public function getArrayValue(): array
     {
         return $this->value;
     }
 
-    /**
-     * @return float
-     */
     public function getFloatValue(): float
     {
         return $this->value;
     }
 
-    /**
-     * @return int
-     */
     public function getIntegerValue(): int
     {
         return $this->value;
     }
 
-    /**
-     * @return string
-     */
     public function getStringValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param string $value Value.
-     * @return bool
-     */
-    public static function isValidValue(
-        $value
-    ): bool {
+    public static function isValidValue(mixed $value): bool
+    {
         return false;
     }
 }

@@ -16,47 +16,32 @@ use ReflectionClass;
 
 /**
  * Class Enum
+ *
+ * @deprecated Consider using PHP 8.1 enumerations instead.
  */
 class Enum extends SingleValueObject
 {
-    /**
-     * @var array
-     */
-    private static $constants = [];
+    private static array $constants = [];
 
-    /**
-     * @var array
-     */
-    private static $instances = [];
+    private static array $instances = [];
 
-    /**
-     * @param mixed $value
-     */
-    protected function __construct(
-        $value
-    ) {
+    protected function __construct(mixed $value)
+    {
         parent::__construct($value);
     }
 
     /**
-     * @param string $name      Constant name.
-     * @param array  $arguments Arguments.
-     * @return mixed
      * @throws InvalidArgumentException If the provided enum name does not exist.
      */
-    public static function __callStatic(
-        string $name,
-        array $arguments
-    ): self {
+    public static function __callStatic(string $name, array $arguments): static
+    {
         $constants = static::getValidValues();
 
-        if (!array_key_exists($name, $constants)) {
-            throw new InvalidArgumentException(
-                'Invalid enumeration name: ' . $name
-            );
+        if (! array_key_exists($name, $constants)) {
+            throw new InvalidArgumentException('Invalid enumeration name: ' . $name);
         }
 
-        if (!isset(self::$instances[static::class][$name])) {
+        if (! isset(self::$instances[static::class][$name])) {
             $instance = new static($constants[$name]);
             self::$instances[static::class][$name] = $instance;
         }
@@ -64,9 +49,6 @@ class Enum extends SingleValueObject
         return self::$instances[static::class][$name];
     }
 
-    /**
-     * @return array
-     */
     public static function getValidValues(): array
     {
         if (!isset(self::$constants[static::class])) {
@@ -77,30 +59,18 @@ class Enum extends SingleValueObject
         return self::$constants[static::class];
     }
 
-    /**
-     * @param mixed $value Value.
-     * @return bool
-     */
-    public static function isValidValue(
-        $value
-    ): bool {
+    public static function isValidValue(mixed $value): bool
+    {
         return in_array($value, static::getValidValues(), true);
     }
 
-    /**
-     * @param mixed $value
-     * @return static
-     */
-    public static function parse(
-        $value
-    ) {
+    public static function parse(mixed $value): static
+    {
         $constants = static::getValidValues();
         $name = array_search($value, $constants, true);
 
         if ($name === false) {
-            throw new InvalidArgumentException(
-                'Invalid enumeration value: ' . $value
-            );
+            throw new InvalidArgumentException('Invalid enumeration value: ' . $value);
         }
 
         if (!isset(self::$instances[static::class][$name])) {

@@ -88,7 +88,7 @@ class SingleValueObjectTest extends TestCase
     /**
      * @return array
      */
-    public function provideCompareToData(): array
+    public static function provideCompareToData(): array
     {
         $fqcn = get_class(new class('abc') extends SingleValueObject {
             public static function isValidValue($value): bool {

@@ -18,25 +18,15 @@ use Ramsey\Uuid\Uuid as UuidGenerator;
  */
 class Uuid extends SingleValueObject
 {
-    public const VALUE_PATTERN = '/^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}$/';
+    public const VALUE_PATTERN = '/^[0-9a-z]{8}(-[0-9a-z]{4}){3}-[0-9a-z]{12}$/';
 
-    /**
-     * @return static
-     */
-    public static function generate()
+    public static function generate(): static
     {
-        $value = UuidGenerator::uuid4()->toString();
-
-        return new static($value);
+        return new static(UuidGenerator::uuid4()->toString());
     }
 
-    /**
-     * @param string $value Value.
-     * @return bool
-     */
-    public static function isValidValue(
-        $value
-    ): bool {
+    public static function isValidValue(mixed $value): bool
+    {
         return is_string($value)
             && preg_match(self::VALUE_PATTERN, $value) === 1;
     }

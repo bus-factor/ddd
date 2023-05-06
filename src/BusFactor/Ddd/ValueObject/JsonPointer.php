@@ -19,43 +19,27 @@ use LogicException;
  */
 class JsonPointer extends SingleValueObject
 {
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->getStringValue();
     }
 
-    /**
-     * @return string
-     */
     public function getStringValue(): string
     {
-        $references = $this->getArrayValue();
         $encodedReferences = [];
 
-        foreach ($references as $reference) {
+        foreach ($this->getArrayValue() as $reference) {
             $encodedReferences[] = str_replace(['~', '/'], ['~0', '~1'], (string) $reference);
         }
 
         return implode('/', $encodedReferences);
     }
 
-    /**
-     * @param string $value
-     * @return bool
-     */
-    public static function isValidValue($value): bool
+    public static function isValidValue(mixed $value): bool
     {
-        return is_array($value)
-            && !empty($value);
+        return is_array($value) && !empty($value);
     }
 
-    /**
-     * @param string $value
-     * @return JsonPointer
-     */
     public static function parse(string $value): JsonPointer
     {
         $references = [];
@@ -69,7 +53,6 @@ class JsonPointer extends SingleValueObject
     }
 
     /**
-     * @return JsonPointer
      * @throws LogicException
      */
     public function popReference(): JsonPointer
@@ -81,19 +64,8 @@ class JsonPointer extends SingleValueObject
         return new self($references);
     }
 
-    /**
-     * @param $reference
-     * @return JsonPointer
-     * @throws InvalidArgumentException
-     */
-    public function pushReference($reference): JsonPointer
+    public function pushReference(string|int $reference): JsonPointer
     {
-        if (!is_string($reference) && !is_int($reference)) {
-            $format = 'Invalid reference. Expected [string], or [integer], got [%s]';
-
-            throw new InvalidArgumentException(sprintf($format, gettype($reference)));
-        }
-
-        return new self(array_merge($this->getArrayValue(), [$reference]));
+        return new self([...$this->getArrayValue(), $reference]);
     }
 }

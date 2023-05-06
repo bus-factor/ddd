@@ -38,7 +38,7 @@
     }
   },
   "require": {
-    "php": ">=7.3",
+    "php": "^8.1",
     "ext-json": "*",
     "ramsey/uuid": ">=4.1"
   },
@@ -47,7 +47,13 @@
   },
   "scripts": {
     "test": "phpunit --no-coverage",
-    "test:cov:text": "phpunit --coverage-text=php://stdout",
-    "test:cov:html": "phpunit --coverage-html=coverage"
+    "test:cov:text": [
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit --coverage-text=php://stdout"
+    ],
+    "test:cov:html": [
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit --coverage-html=coverage"
+    ]
   }
 }

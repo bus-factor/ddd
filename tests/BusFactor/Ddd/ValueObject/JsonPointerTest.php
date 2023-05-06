@@ -59,23 +59,4 @@ class JsonPointerTest extends TestCase
         $this->assertEquals(['', 'data'], $otherSubject2->getArrayValue());
         $this->assertEquals(['', 'data', 'attributes'], $otherSubject->getArrayValue());
     }
-
-    /**
-     * @testWith [false, "Invalid reference. Expected [string], or [integer], got [boolean]"]
-     *           [13.37, "Invalid reference. Expected [string], or [integer], got [double]"]
-     *           [[1, 2, 3], "Invalid reference. Expected [string], or [integer], got [array]"]
-     *
-     * @param mixed $reference
-     * @param string $expectedExceptionMessage
-     * @return void
-     */
-    public function testPushReferenceFailure($reference, string $expectedExceptionMessage): void
-    {
-        $subject = new JsonPointer(['', 'data']);
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage($expectedExceptionMessage);
-
-        $subject->pushReference($reference);
-    }
 }

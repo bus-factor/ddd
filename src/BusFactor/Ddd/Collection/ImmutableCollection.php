@@ -11,24 +11,21 @@ declare(strict_types=1);
 
 namespace BusFactor\Ddd\Collection;
 
+use ArrayIterator;
+
 /**
  * Class ImmutableCollection
  */
 class ImmutableCollection extends Collection
 {
-    /**
-     * @param string $valueType
-     * @param array $values
-     * @param int $flags
-     * @param string $iteratorClass
-     */
     public function __construct(
         string $valueType,
         array $values = [],
         int $flags = 0,
-        string $iteratorClass = 'ArrayIterator'
+        string $iteratorClass = ArrayIterator::class,
     ) {
         parent::__construct($valueType, $values, $flags, $iteratorClass);
+
         $this->freeze();
     }
 }

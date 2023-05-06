@@ -16,59 +16,17 @@ namespace BusFactor\Ddd;
  */
 interface ComparableInterface
 {
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return int
-     */
-    public function compareTo(
-        ComparableInterface $subject
-    ): int;
+    public function compareTo(ComparableInterface $subject): int;
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isEqualTo(
-        ComparableInterface $subject
-    ): bool;
+    public function isEqualTo(ComparableInterface $subject): bool;
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isGreaterThan(
-        ComparableInterface $subject
-    ): bool;
+    public function isGreaterThan(ComparableInterface $subject): bool;
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isGreaterThanOrEqualTo(
-        ComparableInterface $subject
-    ): bool;
+    public function isGreaterThanOrEqualTo(ComparableInterface $subject): bool;
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isLessThan(
-        ComparableInterface $subject
-    ): bool;
+    public function isLessThan(ComparableInterface $subject): bool;
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isLessThanOrEqualTo(
-        ComparableInterface $subject
-    ): bool;
+    public function isLessThanOrEqualTo(ComparableInterface $subject): bool;
 
-    /**
-     * @param ComparableInterface $subject Subject.
-     * @return bool
-     */
-    public function isNotEqualTo(
-        ComparableInterface $subject
-    ): bool;
+    public function isNotEqualTo(ComparableInterface $subject): bool;
 }
